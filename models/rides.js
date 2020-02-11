@@ -1,12 +1,8 @@
-var mongoose = require('mongoose'),
-    Schema   = mongoose.Schema;
+const mongoose = require('mongoose')
+const {Schema}   = mongoose;
 
-    var driveSchema = new Schema({
-        id: {type: String },
-        name: {type: String},
-      });
 
-      var rideSchema = new Schema ({
+      const rideSchema = new Schema ({
         kilometers: {type: Number},
         minutes: {type: Number},
         price: {type: Number},
@@ -20,4 +16,4 @@ var mongoose = require('mongoose'),
         }]
       });
     
-    module.exports = mongoose.model('Rides', driveSchema, rideSchema);
+    module.exports = mongoose.model('rides', driveSchema, rideSchema);

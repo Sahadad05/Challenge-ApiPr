@@ -1,9 +1,10 @@
-var mongoose = require('mongoose');
-var Rides  = mongoose.model('Rides');
+const mongoose = require('mongoose');
+const Driver  = mongoose.model('drivers');
+const Rides  = mongoose.model('rides');
 
 //GET - Return all drivers in the DB
 exports.findAllDriver = function(req, res){
-  Drivers.find(function(err, drivers){
+  Driver.find(function(err, driver){
     if(err) res.send(400, err.message);
     console.log('GET /drivers')
     res.status(200).jsonp(rides);
@@ -12,7 +13,7 @@ exports.findAllDriver = function(req, res){
 
 //GET - Return a Driver with specified ID
 exports.findById = function(req, res) {
-	Drivers.findById(req.params.id, function(err, drivers) {
+	Driver.findById(req.params.id, function(err, drivers) {
     if(err) return res.send(500, err.message);
 
     console.log('GET /drivers/' + req.params.id);
@@ -35,7 +36,7 @@ exports.addRide = function(req, res) {
 	console.log('POST');
 	console.log(req.body);
 
-	var ride = new Ride({
+	const ride = new Ride({
 		kilometers:    req.body.kilometers,
 		minutes: 	  req.body.minutes,
 		price:  req.body.price,
